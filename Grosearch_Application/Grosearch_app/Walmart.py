@@ -1,0 +1,135 @@
+import json
+import requests
+'''
+Created on Aug 18, 2022
+
+@author: manjo
+'''
+def DataCapture(item: str) -> 'JSON Dict': 
+    #Pay-load captured from PostMan API application in-order to replicate cookie and  ping server to gain access to Walmart product information via their API
+    url = "https://www.walmart.com/orchestra/home/graphql/search?query={}&page=1&prg=desktop&sort=best_match&ps=40&searchArgs.query={}&searchArgs.prg=desktop&fitmentFieldParams=true&enablePortableFacets=true&enableFacetCount=true&fetchMarquee=true&fetchSkyline=true&fetchSbaTop=true&tenant=WM_GLASS".format(item, item)
+    #The search query has been formatted to search for the functions argument
+    payload = json.dumps({
+      "query": "query Search( $query:String $page:Int $prg:Prg! $facet:String $sort:Sort = best_match $catId:String $max_price:String $min_price:String $spelling:Boolean = true $affinityOverride:AffinityOverride $storeSlotBooked:String $ps:Int $ptss:String $recall_set:String $fitmentFieldParams:JSON ={}$fitmentSearchParams:JSON ={}$fetchMarquee:Boolean! $trsp:String $fetchSkyline:Boolean! $fetchSbaTop:Boolean! $additionalQueryParams:JSON ={}$searchArgs:SearchArgumentsForCLS $enablePortableFacets:Boolean = false $intentSource:IntentSource $tenant:String! $enableFacetCount:Boolean = true $pageType:String! = \"SearchPage\" ){search( query:$query page:$page prg:$prg facet:$facet sort:$sort cat_id:$catId max_price:$max_price min_price:$min_price spelling:$spelling affinityOverride:$affinityOverride storeSlotBooked:$storeSlotBooked ps:$ps ptss:$ptss recall_set:$recall_set trsp:$trsp intentSource:$intentSource additionalQueryParams:$additionalQueryParams pageType:$pageType ){query searchResult{...SearchResultFragment}}contentLayout( channel:\"WWW\" pageType:$pageType tenant:$tenant searchArgs:$searchArgs ){modules{...ModuleFragment configs{...SearchNonItemFragment __typename...on TempoWM_GLASSWWWSponsoredProductCarouselConfigs{_rawConfigs}...on _TempoWM_GLASSWWWSearchSortFilterModuleConfigs{facetsV1 @skip(if:$enablePortableFacets){...FacetFragment}topNavFacets @include(if:$enablePortableFacets){...FacetFragment}allSortAndFilterFacets @include(if:$enablePortableFacets){...FacetFragment}}...on _TempoWM_GLASSWWWSearchGuidedNavModuleConfigs{guidedNavigation{...GuidedNavFragment}}...on TempoWM_GLASSWWWPillsModuleConfigs{moduleSource pillsV2{...PillsModuleFragment}}...TileTakeOverProductFragment...on TempoWM_GLASSWWWSearchFitmentModuleConfigs{fitments( fitmentSearchParams:$fitmentSearchParams fitmentFieldParams:$fitmentFieldParams ){...FitmentFragment sisFitmentResponse{...SearchResultFragment}}}...on TempoWM_GLASSWWWStoreSelectionHeaderConfigs{fulfillmentMethodLabel storeDislayName}...BrandAmplifierAdConfigs @include(if:$fetchSbaTop)...BannerModuleFragment...MarqueeDisplayAdConfigsFragment @include(if:$fetchMarquee)...SkylineDisplayAdConfigsFragment @include(if:$fetchSkyline)...HorizontalChipModuleConfigsFragment...SkinnyBannerFragment}}...LayoutFragment pageMetadata{location{pickupStore deliveryStore intent postalCode stateOrProvinceCode city storeId accessPointId accessType spokeNodeId}pageContext}}}fragment SearchResultFragment on SearchInterface{title aggregatedCount...BreadCrumbFragment...DebugFragment...ItemStacksFragment...PageMetaDataFragment...PaginationFragment...SpellingFragment...SpanishTranslationFragment...RequestContextFragment...ErrorResponse modules{facetsV1 @skip(if:$enablePortableFacets){...FacetFragment}topNavFacets @include(if:$enablePortableFacets){...FacetFragment}allSortAndFilterFacets @include(if:$enablePortableFacets){...FacetFragment}guidedNavigation{...GuidedNavFragment}guidedNavigationV2{...PillsModuleFragment}pills{...PillsModuleFragment}spellCheck{title subTitle urlLinkText url}}}fragment ModuleFragment on TempoModule{name version type moduleId schedule{priority}matchedTrigger{zone}}fragment LayoutFragment on ContentLayout{layouts{id layout}}fragment BreadCrumbFragment on SearchInterface{breadCrumb{id name url}}fragment DebugFragment on SearchInterface{debug{sisUrl adsUrl}}fragment ItemStacksFragment on SearchInterface{itemStacks{displayMessage meta{adsBeacon{adUuid moduleInfo max_ads}query stackId stackType title layoutEnum totalItemCount totalItemCountDisplay viewAllParams{query cat_id sort facet affinityOverride recall_set min_price max_price}}itemsV2{...ItemFragment...InGridMarqueeAdFragment...TileTakeOverTileFragment}}}fragment ItemFragment on Product{__typename id usItemId fitmentLabel name checkStoreAvailabilityATC seeShippingEligibility brand type shortDescription weightIncrement imageInfo{...ProductImageInfoFragment}canonicalUrl externalInfo{url}itemType category{path{name url}}badges{flags{...on BaseBadge{key text type id}...on PreviouslyPurchasedBadge{id text key lastBoughtOn numBought}}tags{...on BaseBadge{key text type}}}classType averageRating numberOfReviews esrb mediaRating salesUnitType sellerId sellerName hasSellerBadge availabilityStatusV2{display value}groupMetaData{groupType groupSubType numberOfComponents groupComponents{quantity offerId componentType productDisplayName}}productLocation{displayValue aisle{zone aisle}}fulfillmentSpeed offerId preOrder{...PreorderFragment}priceInfo{...ProductPriceInfoFragment}variantCriteria{...VariantCriteriaFragment}snapEligible fulfillmentBadge fulfillmentTitle fulfillmentType brand manufacturerName showAtc sponsoredProduct{spQs clickBeacon spTags viewBeacon}showOptions showBuyNow rewards{eligible state minQuantity rewardAmt promotionId selectionToken cbOffer term expiry description}}fragment ProductImageInfoFragment on ProductImageInfo{thumbnailUrl size}fragment ProductPriceInfoFragment on ProductPriceInfo{priceRange{minPrice maxPrice}currentPrice{...ProductPriceFragment}comparisonPrice{...ProductPriceFragment}wasPrice{...ProductPriceFragment}unitPrice{...ProductPriceFragment}listPrice{...ProductPriceFragment}savingsAmount{...ProductSavingsFragment}shipPrice{...ProductPriceFragment}subscriptionPrice{priceString subscriptionString}priceDisplayCodes{priceDisplayCondition finalCostByWeight submapType}}fragment PreorderFragment on PreOrder{isPreOrder preOrderMessage preOrderStreetDateMessage}fragment ProductPriceFragment on ProductPrice{price priceString variantPriceString priceType currencyUnit priceDisplay}fragment ProductSavingsFragment on ProductSavings{amount percent priceString}fragment VariantCriteriaFragment on VariantCriterion{name type id isVariantTypeSwatch variantList{id images name rank swatchImageUrl availabilityStatus products selectedProduct{canonicalUrl usItemId}}}fragment InGridMarqueeAdFragment on MarqueePlaceholder{__typename type moduleLocation lazy}fragment TileTakeOverTileFragment on TileTakeOverProductPlaceholder{__typename type tileTakeOverTile{span title subtitle image{src alt}logoImage{src alt}backgroundColor titleTextColor subtitleTextColor tileCta{ctaLink{clickThrough{value}linkText title}ctaType ctaTextColor}}}fragment PageMetaDataFragment on SearchInterface{pageMetadata{storeSelectionHeader{fulfillmentMethodLabel storeDislayName}title canonical description location{addressId}}}fragment PaginationFragment on SearchInterface{paginationV2{maxPage pageProperties}}fragment SpanishTranslationFragment on SearchInterface{translation{metadata{originalQuery translatedQuery isTranslated translationOfferType moduleSource}translationModule{title urlLinkText originalQueryUrl}}}fragment SpellingFragment on SearchInterface{spelling{correctedTerm}}fragment RequestContextFragment on SearchInterface{requestContext{vertical isFitmentFilterQueryApplied searchMatchType categories{id name}}}fragment ErrorResponse on SearchInterface{errorResponse{correlationId source errorCodes errors{errorType statusCode statusMsg source}}}fragment GuidedNavFragment on GuidedNavigationSearchInterface{title url}fragment PillsModuleFragment on PillsSearchInterface{title url image:imageV1{src alt}}fragment BannerModuleFragment on TempoWM_GLASSWWWSearchBannerConfigs{moduleType viewConfig{title image imageAlt displayName description url urlAlt appStoreLink appStoreLinkAlt playStoreLink playStoreLinkAlt}}fragment FacetFragment on Facet{title name type layout min max selectedMin selectedMax unboundedMax stepSize isSelected values{id title name description type itemCount @include(if:$enableFacetCount) isSelected baseSeoURL}}fragment FitmentFragment on Fitments{partTypeIDs result{status formId position quantityTitle extendedAttributes{...FitmentFieldFragment}labels{...LabelFragment}resultSubTitle notes suggestions{...FitmentSuggestionFragment}}labels{...LabelFragment}savedVehicle{vehicleType{...VehicleFieldFragment}vehicleYear{...VehicleFieldFragment}vehicleMake{...VehicleFieldFragment}vehicleModel{...VehicleFieldFragment}additionalAttributes{...VehicleFieldFragment}}fitmentFields{...VehicleFieldFragment}fitmentForms{id fields{...FitmentFieldFragment}title labels{...LabelFragment}}}fragment LabelFragment on FitmentLabels{ctas{...FitmentLabelEntityFragment}messages{...FitmentLabelEntityFragment}links{...FitmentLabelEntityFragment}images{...FitmentLabelEntityFragment}}fragment FitmentLabelEntityFragment on FitmentLabelEntity{id label}fragment VehicleFieldFragment on FitmentVehicleField{id label value}fragment FitmentFieldFragment on FitmentField{id displayName value extended data{value label}dependsOn}fragment FitmentSuggestionFragment on FitmentSuggestion{id position loadIndex speedRating searchQueryParam labels{...LabelFragment}cat_id fitmentSuggestionParams{id value}}fragment MarqueeDisplayAdConfigsFragment on TempoWM_GLASSWWWMarqueeDisplayAdConfigs{_rawConfigs ad{...DisplayAdFragment}}fragment DisplayAdFragment on Ad{...AdFragment adContent{type data{__typename...AdDataDisplayAdFragment}}}fragment AdFragment on Ad{status moduleType platform pageId pageType storeId stateCode zipCode pageContext moduleConfigs adsContext adRequestComposite}fragment AdDataDisplayAdFragment on AdData{...on DisplayAd{json status}}fragment SkylineDisplayAdConfigsFragment on TempoWM_GLASSWWWSkylineDisplayAdConfigs{_rawConfigs ad{...SkylineDisplayAdFragment}}fragment SkylineDisplayAdFragment on Ad{...SkylineAdFragment adContent{type data{__typename...SkylineAdDataDisplayAdFragment}}}fragment SkylineAdFragment on Ad{status moduleType platform pageId pageType storeId stateCode zipCode pageContext moduleConfigs adsContext adRequestComposite}fragment SkylineAdDataDisplayAdFragment on AdData{...on DisplayAd{json status}}fragment BrandAmplifierAdConfigs on TempoWM_GLASSWWWBrandAmplifierAdConfigs{_rawConfigs moduleLocation ad{...SponsoredBrandsAdFragment}}fragment SponsoredBrandsAdFragment on Ad{...AdFragment adContent{type data{__typename...AdDataSponsoredBrandsFragment}}}fragment AdDataSponsoredBrandsFragment on AdData{...on SponsoredBrands{adUuid adExpInfo moduleInfo brands{logo{featuredHeadline featuredImage featuredImageName featuredUrl logoClickTrackUrl}products{...ProductFragment}}}}fragment ProductFragment on Product{usItemId offerId badges{flags{__typename...on BaseBadge{id text key query type}...on PreviouslyPurchasedBadge{id text key lastBoughtOn numBought criteria{name value}}}labels{__typename...on BaseBadge{id text key}...on PreviouslyPurchasedBadge{id text key lastBoughtOn numBought}}tags{__typename...on BaseBadge{id text key}}}priceInfo{priceDisplayCodes{rollback reducedPrice eligibleForAssociateDiscount clearance strikethrough submapType priceDisplayCondition unitOfMeasure pricePerUnitUom}currentPrice{price priceString}wasPrice{price priceString}priceRange{minPrice maxPrice priceString}unitPrice{price priceString}}showOptions sponsoredProduct{spQs clickBeacon spTags}canonicalUrl numberOfReviews averageRating availabilityStatus imageInfo{thumbnailUrl allImages{id url}}name fulfillmentBadge classType type showAtc p13nData{predictedQuantity flags{PREVIOUSLY_PURCHASED{text}CUSTOMERS_PICK{text}}labels{PREVIOUSLY_PURCHASED{text}CUSTOMERS_PICK{text}}}}fragment SearchNonItemFragment on TempoWM_GLASSWWWSearchNonItemConfigs{title subTitle urlLinkText url}fragment HorizontalChipModuleConfigsFragment on TempoWM_GLASSWWWHorizontalChipModuleConfigs{chipModuleSource:moduleSource chipModule{title url{linkText title clickThrough{type value}}}chipModuleWithImages{title url{linkText title clickThrough{type value}}image{alt clickThrough{type value}height src title width}}}fragment SkinnyBannerFragment on TempoWM_GLASSWWWSkinnyBannerConfigs{bannerType desktopBannerHeight bannerImage{src title alt}mobileBannerHeight mobileImage{src title alt}clickThroughUrl{clickThrough{value}}backgroundColor heading{title fontColor}subHeading{title fontColor}bannerCta{ctaLink{linkText clickThrough{value}}textColor ctaType}}fragment TileTakeOverProductFragment on TempoWM_GLASSWWWTileTakeOverProductConfigs{dwebSlots mwebSlots TileTakeOverProductDetails{pageNumber span dwebPosition mwebPosition title subtitle image{src alt}logoImage{src alt}backgroundColor titleTextColor subtitleTextColor tileCta{ctaLink{clickThrough{value}linkText title}ctaType ctaTextColor}}}",
+      "variables": {
+        "id": "",
+        "dealsId": "",
+        "query": "{}".format(item),
+        "page": 1,
+        "prg": "desktop",
+        "catId": "",
+        "facet": "",
+        "sort": "best_match",
+        "rawFacet": "",
+        "seoPath": "",
+        "ps": 40,
+        "ptss": "",
+        "trsp": "",
+        "beShelfId": "",
+        "recall_set": "",
+        "module_search": "",
+        "min_price": "",
+        "max_price": "",
+        "storeSlotBooked": "",
+        "additionalQueryParams": {
+          "hidden_facet": None,
+          "translation": None
+        },
+        "searchArgs": {
+          "query": "{}".format(item),
+          "cat_id": "",
+          "prg": "desktop",
+          "facet": ""
+        },
+        "fitmentFieldParams": {
+          "powerSportEnabled": True
+        },
+        "fitmentSearchParams": {
+          "id": "",
+          "dealsId": "",
+          "query": "{}".format(item),
+          "page": 1,
+          "prg": "desktop",
+          "catId": "",
+          "facet": "",
+          "sort": "best_match",
+          "rawFacet": "",
+          "seoPath": "",
+          "ps": 40,
+          "ptss": "",
+          "trsp": "",
+          "beShelfId": "",
+          "recall_set": "",
+          "module_search": "",
+          "min_price": "",
+          "max_price": "",
+          "storeSlotBooked": "",
+          "additionalQueryParams": {
+            "hidden_facet": None,
+            "translation": None
+          },
+          "searchArgs": {
+            "query": "{}".format(item),
+            "cat_id": "",
+            "prg": "desktop",
+            "facet": ""
+          },
+          "cat_id": "",
+          "_be_shelf_id": ""
+        },
+        "enablePortableFacets": True,
+        "enableFacetCount": True,
+        "fetchMarquee": True,
+        "fetchSkyline": True,
+        "fetchSbaTop": True,
+        "tenant": "WM_GLASS",
+        "pageType": "SearchPage"
+      }
+    })
+    headers = {
+      'authority': 'www.walmart.com',
+      'accept': 'application/json',
+      'accept-language': 'en-US,en;q=0.9',
+      'content-type': 'application/json',
+      'cookie': 'QuantumMetricUserID=0bf3210e1f1e4e1da832902e6ffce3ab; vtc=RP7UAK3ehEmhyg-m1j8zxU; _pxhd=d9928583ce6df2aee4846168b9d52a19c815020f565ce7ce306c174c5dd21c1e:b983816b-fbfc-11ec-a1d8-725871736769; _pxvid=b983816b-fbfc-11ec-a1d8-725871736769; _abck=esxz8gsisvj8iamfiqqj_2082; WMP=4; g=1; _vc=OMN%2FV0%2FpzzgvKD7A5%2B3In5cBLs0SeoIMBon9vQRAPJg%3D; SPID=5f927af07bccb6e997e0a87ad9dcbc03946f957ba891f27e07a4667824ca6e3ee71dc812899e9cb3b9b48b40ec7176f5wmcxo; CID=b56f4f2c-4c29-448b-bd91-dd6551ab843c; hasCID=1; customer=%7B%22firstName%22%3A%22Gurcharanjit%22%2C%22lastNameInitial%22%3A%22S%22%7D; type=REGISTERED; oneapp_customer=true; _m=9; userContext=eyJhZGRyZXNzRGF0YSI6bnVsbCwiaGFzSXRlbVN1YnNjcmlwdGlvbiI6ZmFsc2UsImhhc01lbWJlcnNoaXBJbmZvIjpmYWxzZSwiaXNEZWZhdWx0IjpmYWxzZSwicGF5bWVudERhdGEiOnsiY2FwaXRhbE9uZUJhbm5lclNub296ZVRTIjowLCJoYXNDYXBPbmUiOmZhbHNlLCJoYXNDYXBPbmVMaW5rZWQiOmZhbHNlLCJoYXNDcmVkaXRDYXJkIjpmYWxzZSwiaGFzRGlyZWN0ZWRTcGVuZENhcmQiOnRydWUsImhhc0VCVCI6ZmFsc2UsImhhc0dpZnRDYXJkIjpmYWxzZSwic2hvd0NhcE9uZUJhbm5lciI6dHJ1ZSwid3BsdXNOb0JlbmVmaXRCYW5uZXIiOnRydWV9LCJwcm9maWxlRGF0YSI6eyJpc0Fzc29jaWF0ZSI6dHJ1ZSwiaXNUZXN0QWNjb3VudCI6ZmFsc2UsIm1lbWJlcnNoaXBPcHRJbiI6eyJpc09wdGVkSW4iOmZhbHNlfX19; AMCV_B5281C8B53309CEF0A490D4D%40AdobeOrg=-1124106680%7CMCIDTS%7C19200%7CMCMID%7C63557730208200535130029925581319580976%7CMCAAMLH-1659407946%7C9%7CMCAAMB-1659407946%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1658810346s%7CNONE%7CvVersion%7C5.2.0; mbox=session#d647f50e284b4b4ba84a1de3aeaf92f4#1658805008|PC#d647f50e284b4b4ba84a1de3aeaf92f4.35_0#1722047948; s_nr30=1658803147464-New; s_vnc365=1690339147465%26vn%3D1; s_tslv=1658803147465; TBV=7; tb_sw_supported=true; adblocked=false; assortmentStoreId=5192; hasLocData=1; TB_Latency_Tracker_100=1; TB_Navigation_Preload_01=1; TB_SFOU-100=; mobileweb=0; xpa=0NcOK|1A0pE|20sH0|2SWkj|43yFS|5_9FA|5cBG1|5mXkC|6EWr4|6h3fK|927zv|AYraE|Af1yH|CN28l|EyvKe|HDfyl|IouYg|JNNE2|Nnski|P_fCM|TZMLq|V-nnO|VZPZz|WdfK9|XBPw9|bcl64|cfVAR|fZHdi|iT-9R|ibBir|jncu9|lqVt_|nzyw-|odFJG|qG0gZ|qyn67|qzcBg|r8csb|sIu3J|uru_L|yefCT|yxNJ6|zCylr|zIYIr; exp-ck=0NcOK12SWkj143yFS15_9FA26EWr416h3fK1927zv1Af1yH1HDfyl2IouYg2JNNE25Nnski1V-nnO1XBPw91fZHdi1ibBir1jncu91nzyw-1odFJG1qG0gZ2qyn672r8csb1sIu3J2yefCT1yxNJ65zIYIr1; locDataV3=eyJpc0RlZmF1bHRlZCI6ZmFsc2UsImlzRXhwbGljaXQiOmZhbHNlLCJpbnRlbnQiOiJTSElQUElORyIsInBpY2t1cCI6W3siYnVJZCI6IjAiLCJub2RlSWQiOiI1MTkyIiwiZGlzcGxheU5hbWUiOiJTYWNyYW1lbnRvIFN1cGVyY2VudGVyIiwibm9kZVR5cGUiOiJTVE9SRSIsImFkZHJlc3MiOnsicG9zdGFsQ29kZSI6Ijk1ODQyIiwiYWRkcmVzc0xpbmUxIjoiNTgyMSBBbnRlbG9wZSBSZCIsImNpdHkiOiJTYWNyYW1lbnRvIiwic3RhdGUiOiJDQSIsImNvdW50cnkiOiJVUyIsInBvc3RhbENvZGU5IjoiOTU4NDItMzkwMiJ9LCJnZW9Qb2ludCI6eyJsYXRpdHVkZSI6MzguNzA0MzE4LCJsb25naXR1ZGUiOi0xMjEuMzMxODYxfSwiaXNHbGFzc0VuYWJsZWQiOnRydWUsInNjaGVkdWxlZEVuYWJsZWQiOnRydWUsInVuU2NoZWR1bGVkRW5hYmxlZCI6dHJ1ZSwiaHViTm9kZUlkIjoiNTE5MiIsInN0b3JlSHJzIjoiMDY6MDAtMjM6MDAiLCJzdXBwb3J0ZWRBY2Nlc3NUeXBlcyI6WyJQSUNLVVBfSU5TVE9SRSIsIlBJQ0tVUF9DVVJCU0lERSJdfV0sInNoaXBwaW5nQWRkcmVzcyI6eyJpZCI6IjE5NjEzN2RjLTFiYTctNDgwZC05YTRhLTRlMmU4NzA1ZjYyNiIsImFkZHJlc3NMaW5lT25lIjoiNzcyOCBSYXZlbnN3b3J0aCBXYXkiLCJsYXRpdHVkZSI6MzguNzA0NzYsImxvbmdpdHVkZSI6LTEyMS4zMzU3NDMsInBvc3RhbENvZGUiOiI5NTg0MzM4NTAiLCJjaXR5IjoiQW50ZWxvcGUiLCJzdGF0ZSI6IkNBIiwiY291bnRyeUNvZGUiOiJVU0EiLCJpc0Fwb0ZwbyI6ZmFsc2UsImlzUG9Cb3giOmZhbHNlLCJhZGRyZXNzVHlwZSI6IlJFU0lERU5USUFMIiwibG9jYXRpb25BY2N1cmFjeSI6ImhpZ2giLCJtb2RpZmllZERhdGUiOjE1NzUwOTIzMjYwNDYsImdpZnRBZGRyZXNzIjpmYWxzZSwiZmlyc3ROYW1lIjoiR3VyY2hhcmFuaml0IiwibGFzdE5hbWUiOiJTaW5naCJ9LCJhc3NvcnRtZW50Ijp7Im5vZGVJZCI6IjUxOTIiLCJkaXNwbGF5TmFtZSI6IlNhY3JhbWVudG8gU3VwZXJjZW50ZXIiLCJhY2Nlc3NQb2ludHMiOm51bGwsInN1cHBvcnRlZEFjY2Vzc1R5cGVzIjpbXSwiaW50ZW50IjoiUElDS1VQIiwic2NoZWR1bGVFbmFibGVkIjpmYWxzZX0sImRlbGl2ZXJ5Ijp7ImJ1SWQiOiIwIiwibm9kZUlkIjoiNTE5MiIsImRpc3BsYXlOYW1lIjoiU2FjcmFtZW50byBTdXBlcmNlbnRlciIsIm5vZGVUeXBlIjoiU1RPUkUiLCJhZGRyZXNzIjp7InBvc3RhbENvZGUiOiI5NTg0MiIsImFkZHJlc3NMaW5lMSI6IjU4MjEgQW50ZWxvcGUgUmQiLCJjaXR5IjoiU2FjcmFtZW50byIsInN0YXRlIjoiQ0EiLCJjb3VudHJ5IjoiVVMiLCJwb3N0YWxDb2RlOSI6Ijk1ODQyLTM5MDIifSwiZ2VvUG9pbnQiOnsibGF0aXR1ZGUiOjM4LjcwNDMxOCwibG9uZ2l0dWRlIjotMTIxLjMzMTg2MX0sImlzR2xhc3NFbmFibGVkIjp0cnVlLCJzY2hlZHVsZWRFbmFibGVkIjp0cnVlLCJ1blNjaGVkdWxlZEVuYWJsZWQiOnRydWUsImFjY2Vzc1BvaW50cyI6W3siYWNjZXNzVHlwZSI6IkRFTElWRVJZX0FERFJFU1MifV0sImh1Yk5vZGVJZCI6IjUxOTIiLCJpc0V4cHJlc3NEZWxpdmVyeU9ubHkiOmZhbHNlLCJzdXBwb3J0ZWRBY2Nlc3NUeXBlcyI6WyJERUxJVkVSWV9BRERSRVNTIl19LCJpbnN0b3JlIjpmYWxzZSwicmVmcmVzaEF0IjoxNjYwNzE5MzczOTExLCJ2YWxpZGF0ZUtleSI6InByb2Q6djI6YjU2ZjRmMmMtNGMyOS00NDhiLWJkOTEtZGQ2NTUxYWI4NDNjIn0%3D; bstc=YaNJr1-ZQQyvQfjJtQPq1U; _astc=a16a1ae5632ab61099c8c78444071b58; dimensionData=599; xpm=1%2B1660697773%2BRP7UAK3ehEmhyg-m1j8zxU~b56f4f2c-4c29-448b-bd91-dd6551ab843c%2B0; pxcts=65627f7a-1dc7-11ed-a8f7-426c53445a67; wmlh=eada1df4540c671e34dfd22fc8088f91f0a999dba1c9d639e849beb26d660c65; ak_bmsc=FEE4BDDF3DFD0833EDA30921FE3E07D0~000000000000000000000000000000~YAAQypTYF4m/nKeCAQAAHQ9NqRAl+TXWX19KgN2pNJHOtL7KUmrwd96Kc3ljoMxx6yRSqCom4V3GJaPSZVNsZ4TM/AVgDU9Xeu/k2cBp7TfdLfgsXRLfDiugym9myfuDgPt0W/zkFoZxe+cp0vQ4I7rv4Q5l0DH5MJNmS7e/RF/WmfTjHhEoEWujuNK9E/vTLOKoqfS2eAe6jQlh4SFAQFedLlAz0iuDkyrMQY80We1Ygo5L6u6CgOiUcnl7IYlN9zKQRnRqw9dPzTaKTQlqIYRiLy2BaUEtB1Be633tKfsYi+fw/w+lQAagJSxrHJSzV44QcPlAtaGTMI/M8ac2JDMpcer6uJ3WWjUshdBNIBw/dQLJg1P1snUJ0PklBJLzE6JPU/kXSg/8RfpFpHzwu2n0qhw4HMRiKgTIjZ6dqI7zh1+lsU4yZCdYrL0RB3tcideLkd2gvbzHBGSLruMIDsSmO3o3lm4gg0b9YjBOo0jztBh2YQNGVb7Viy4=; _sp_ses.ad94=*; TS01b0be75=01538efd7ca181b71fc2b9729cc0e9a385af43a0467d7b2488cd561ec1639c65c34bf980b5fe25e8e1be08ec06a2fcaed3bc29f8c6; xpumh=1; TS013ed49a=01538efd7ca181b71fc2b9729cc0e9a385af43a0467d7b2488cd561ec1639c65c34bf980b5fe25e8e1be08ec06a2fcaed3bc29f8c6; akavpau_p1=1660700622~id=0956b524eff82b0e09a6acf4a67c9ad3; _sp_id.ad94=f8f4ee85-c585-4024-bcee-772f9fb8e801.1656984451.6.1660700123.1660206420.5d5bf377-9167-4758-ad84-306880a87e81; auth=MTAyOTYyMDE4eUAXIFI6Sw4FpUWJJoH%2B8eV5hd9erHwNFFIKmKlrxaMMTjX%2FvRNKO7ceEPF%2Fs74tND0f34MSvtpNu9h1BPZJytfGXWdEY%2F24RTdMylPqkvhvmJGVGaqwo%2BHDx6bZQptJEk8ozGbo5MEn1vkTvRAX7VGrdvBQw9I7tDhV0IbtcDH6tP64HWIUIzLC1e8wawa8jml5%2Bjboj3Jtgjpe1EcKpTWK8DRV7WegEDnNeeLB8fE%2FRn9yGf%2FIUg7988ZIy%2FAluCAMIsSd3V1l7BBFCrH0fYghlJVWUFABCRzWTIxQBK85iZ1YH1p%2FztKBuD3RTbooGUT8xrcVX4XL1M7D5iCKcHWREZLr9gU%2FmgKbF4yX9Avqsb01PgaRuyNwUZ%2F7DHlqYTTLZ%2Bne0CWPPuAi5ux2gJacwyh4jmkr9TcCIXD4RZk%3D; _pxff_rf=1; _pxff_cfp=1; AID=wmlspartner%253D0%253Areflectorid%253D0000000000000000000000%253Alastupd%253D1660701077106; akavpau_p2=1660701677~id=ffbbcdff84d1dd0a663b021bad8872cc; _px3=f79ae45103f3762a0666e88b45b9556883e94eea401e18d60d45abae6075883a:79HVxB5bKitzSfe8fzLqVcd7uqKaJyxfwdBNJnPfsmTjeu5knOkNg85j1ah4JoaLFcOX2oDxRIQutAH+p8vysA==:1000:zmvEANq9rI4UxLS/lox6u9i2KSHWijXGO7gwdyEL1ZZcooTbkCWAVY8wtO0JCEPTWo03dksw1seN4ytCt4XMwcYFlLP9NufKgftq8JQzcAkYr19WPqO3rW7XGM7f3p07Fg/oLxteXj9YS2i+5ekSH8LWU1KgAaSVUvWme2Dnm/jdMtandvWIs+cyxZ7w7TgpU6SSNirrE12nl5mZd8BJCg==; com.wm.reflector="reflectorid:22222222254430576388@lastupd:1660701088000@firstcreate:1660699020243"; xptwg=1796319314:1C9CDAF0A01C9B0:49FFD09:DE0ED38E:2B53B0C1:9764EB34:; TS012768cf=01a1e0c82e974eb5b580314386edee23c8484995d371ae1570f3f74128d9dcdc1db2a996ef1c1787bc2da748ce028fc62f0bdf3368; TS01a90220=01a1e0c82e974eb5b580314386edee23c8484995d371ae1570f3f74128d9dcdc1db2a996ef1c1787bc2da748ce028fc62f0bdf3368; TS2a5e0c5c027=08481b0168ab2000f5ac0d23109e3e1ccd6310ba004a81e7f70fcd3bbf6db2dfff857920be6ebec008e0977ec7113000877668a5f86e081c15136c6bb22ab094180de9d2c019c042ab27cb2eead7ff2ed7191243a86a7115a1743a0721f84b46; bm_sv=1F58D0D293E16CC04E5C3E1008E4E4FA~YAAQdccbuHmtDmWCAQAA16B/qRA8ZSqs2pSItBawkQef84N5VKvbGRN6qWZ7LwO55wfiYP46gxhIrpjmrz6JPc87DAAA9c3XQ6rX+jrI8XZ6X+xDCu5tU7IfMaKb8G3w67J6gDuiXYwv/SSi1oMYYTM7oJ3+eKrM2vC8lh8WX2LC4bJp853hFY9Gq9E8h4VN68291xRZSqjbm2A9pBIXTYTppCh87zx/WBu+NF47+8FzS0Jw/IWb0kWbrKlo06cLfJ0U~1; SPID=5f927af07bccb6e997e0a87ad9dcbc03946f957ba891f27e07a4667824ca6e3ee71dc812899e9cb3b9b48b40ec7176f5wmcxo; TB_SFOU-100=; TS01a90220=0109af98d67055d9ee0d2f81bd1dccc7690365179b9a5164dfa146e663a62c1c897686f8d8c52297de2a52ed5a80b25140f79ea4b8; _m=9; auth=MTAyOTYyMDE4eUAXIFI6Sw4FpUWJJoH%2B8eV5hd9erHwNFFIKmKlrxaMMTjX%2FvRNKO7ceEPF%2Fs74tND0f34MSvtpNu9h1BPZJytfGXWdEY%2F24RTdMylPqkvhvmJGVGaqwo%2BHDx6bZQptJEk8ozGbo5MEn1vkTvRAX7VGrdvBQw9I7tDhV0IbtcDH6tP64HWIUIzLC1e8wawa8jml5%2Bjboj3Jtgjpe1EcKpTWK8DRV7WegEDnNeeLB8fE%2FRn9yGf%2FIUg7988ZIy%2FAluCAMIsSd3V1l7BBFCrH0fYghlJVWUFABCRzWTIxQBK85iZ1YH1p%2FztKBuD3RTboo8Zg9CEITEQZcqtNd5T08DXWREZLr9gU%2FmgKbF4yX9AsNqewINOVl6j1N8y1FGEgebf5qEHzwkAIBxFZ1a1vvJJacwyh4jmkr9TcCIXD4RZk%3D; bm_sv=1F58D0D293E16CC04E5C3E1008E4E4FA~YAAQbscbuE/pAl+CAQAAZjqaqRDog/ej0uFDc/pO+aT/GGP39n+4qIl5PtpCfzmx/v3dnXBS6FzyDR9KsjFdU2Z0feVI5EMnaJrsNxX7PvuQcNuclOY41nDqNS528XNKwg15v/98jic55yMF3gSshkk4QDRJlyGrbNLcq1a2Cf5rwSRp6Fdw2lTPMn3b7C4kCZDndwW+K0cCheuOJvlj/ZyJH5XSzInBoos0QTMYnTCFkC3L7Cg2xS7h2uxjnhWMtr4V~1; bstc=YaNJr1-ZQQyvQfjJtQPq1U; com.wm.reflector="reflectorid:22222222254430576388@lastupd:1660702833000@firstcreate:1660699020243"; exp-ck=17BdE12SWkj15_9FA26h3fK1927zv1AQhLM1Af1yH1HDfyl2IouYg2Qd0ry2RWwzc1S8_GM1V-nnO1XBPw91fZHdi1gVG-b1ibBir1jncu91kFqfr1odFJG1pGAhC1qG0gZ2qyn672r8csb1sIu3J2w_GEw1yxNJ65zIYIr1; mobileweb=0; vtc=RP7UAK3ehEmhyg-m1j8zxU; xpa=17BdE|1A0pE|20sH0|2SWkj|5_9FA|5mXkC|6h3fK|927zv|AQhLM|Af1yH|GkqrP|HDfyl|IOIpg|IouYg|P_fCM|Qd0ry|RWwzc|S8_GM|T-onc|TZMLq|V-nnO|WdfK9|XBPw9|bcl64|cfVAR|duBe9|fZHdi|gVG-b|iT-9R|ibBir|jncu9|kFqfr|lqVt_|odFJG|pGAhC|qG0gZ|qyn67|r8csb|sIu3J|sbXp_|uru_L|w_GEw|yxNJ6|zIYIr; xpm=0%2B1660702832%2BT5RYQZf-Llt2v2RaDuVh24~b56f4f2c-4c29-448b-bd91-dd6551ab843c%2B0; xptwg=1755247469:C354E76C320958:1F92C6B:8D8881FB:87F96D98:19A677D0:; TS012768cf=0109af98d67055d9ee0d2f81bd1dccc7690365179b9a5164dfa146e663a62c1c897686f8d8c52297de2a52ed5a80b25140f79ea4b8; TS2a5e0c5c027=08b5c86f6aab20009541ec21d1272ce2659f04d7651cb14452595f0073c70202e4a27633c7568c1208506397d5113000e2fd0a0fc4d8191f9a6a28bb5ffbf9f38cf82893b758d2aa9aa830734d5a3d163bdcc12730ab6122c865a3ab5456759a; akavpau_p2=1660703433~id=a34d9bf157e3a55f9a33f829dad83539',
+      'device_profile_ref_id': 'R9iL-GjtvHCyazo_6b2iNs_tX8AC-oM6cumZ',
+      'origin': 'https://www.walmart.com',
+      'referer': 'https://www.walmart.com/search?q={}'.format(item),
+      'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Google Chrome";v="104"',
+      'sec-ch-ua-mobile': '?0',
+      'sec-ch-ua-platform': '"Windows"',
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-origin',
+      'traceparent': 'QaiqArS1goLunJHWRiXnule-KoY0IjdsC7gH',
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+      'wm_mp': 'true',
+      'wm_page_url': 'https://www.walmart.com/search?q=cookies',
+      'wm_qos.correlation_id': 'QaiqArS1goLunJHWRiXnule-KoY0IjdsC7gH',
+      'x-apollo-operation-name': 'Search',
+      'x-enable-server-timing': '1',
+      'x-latency-trace': '1',
+      'x-o-bu': 'WALMART-US',
+      'x-o-ccm': 'server',
+      'x-o-correlation-id': 'QaiqArS1goLunJHWRiXnule-KoY0IjdsC7gH',
+      'x-o-gql-query': 'query Search',
+      'x-o-mart': 'B2C',
+      'x-o-platform': 'rweb',
+      'x-o-platform-version': 'main-1.13.0-26e552',
+      'x-o-segment': 'oaoh'
+    }
+    #The data is in JSON format
+    response = requests.request("POST", url, headers=headers, data=payload)
+    data= json.loads(response.text)
+    products=[]
+    #Exceptions are used as filters for products that do not have price details
+    for product in (data['data']['search']['searchResult']['itemStacks'][0]['itemsV2']):
+        try:
+            if not product['priceInfo']['currentPrice']['price']:
+                pass
+            else:
+                products.append(product)
+        except:
+            pass
+    products.sort(key=lambda x: x['priceInfo']['currentPrice']['price'])
+    return products

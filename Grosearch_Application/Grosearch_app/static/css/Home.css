@@ -1,0 +1,192 @@
+*
+{
+	margin: 0;
+	padding: 0;	
+}
+
+.Top
+{
+	height: 30vh;
+	width: 100%;
+	background-color: #383e42;
+	border: 1px solid;
+  	padding: 10px;
+  	box-shadow: 5px 10px 18px #0000;
+}
+
+.Logo
+{
+	height:30vh ;
+	width:50vw;
+	margin-left: 2vw;
+}
+
+.Company
+{
+	height:5vh;
+	margin-top: -35px;
+	margin-bottom: 20px;
+	display: block;
+	margin-left: 70vw;
+}
+
+.Logos
+{
+	height: 6vh;
+	width: 6vw;
+	
+}
+.Middle
+{
+	height: 85vh;
+	width: 100%;
+	background-image: url(../aisles.jpg);
+}
+
+.search-container
+{
+	color: white;
+	display: block;
+	width: 50vw;
+	
+}
+
+.Trans
+{
+	position: absolute;
+  	background: rgba(80, 80, 80, .6);
+  	border-radius: 5px;
+  	height: 60vh;
+  	width:50vw;
+  	top: 50%;
+  	margin-left: 25vw;
+  	margin-right: 25vw;
+  	
+}
+
+.Header
+{
+	margin-top: 5vh;
+	text-align: center;  
+	color: #8BC53F;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	font-weight: 100;
+	
+}
+.Header2
+{
+	margin-top: 5vh;
+	text-align: center;  
+	color: #8BC53F;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	font-weight: 100;
+	font-size: 20px;
+}
+
+.Searchbar
+{
+	width: 35vw;
+	margin-top: 4vh;
+	margin-right: 10vw;
+	margin-left: 7.5vw;
+	height: 8vh;
+	border-radius: 10px;
+	background:#8DC440;
+	color:darkslategray;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	font-size: 20px;
+	opacity: 80%;
+}
+.Searchbutton
+{
+	margin-top: 5vh;
+	height:50px;
+	width:10vw;
+	border-radius: 20px;
+	margin-right: 20vw;
+	margin-left: 20vw;
+	background-color:#8DC440 ;
+	border: 1px solid #383e42;;
+	color: #383e42;
+	opacity: 80%;
+	cursor:pointer;
+}
+
+.Bottom
+{
+	height: 80vh;
+	width: 100%;
+	background-color: #383e42;
+  	padding: 10px;
+  	box-shadow: 5px 10px 18px #0000;
+  	text-align: center;
+  	outline: none;
+	border: none;
+}
+.Det
+{
+
+	margin-top: 10vh;
+	text-align: center;  
+	color: #8BC53F;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	font-weight: 100;
+	font-size: 50px;
+	vertical-align:top;
+}
+
+.Adj
+{
+	margin-right: 5vw;
+	margin-top: 10vh;
+	height: 200px;
+	width: 200px;
+	border-radius: 50px;
+	margin-left: 2.2vw;
+}
+
+footer 
+{
+	color: #8BC53F;
+	font-family:Georgia, 'Times New Roman', Times, serif;
+	font-weight: 100;
+	font-size: 20px;
+	background-color: #383e42;
+	outline: none;
+	border: none;
+	margin-top: -30px;
+	border: solid;
+	width:15%;
+
+}
+
+.Foots
+{
+	text-decoration: none;
+	color: #8BC53F;
+	border: none;
+  	background-color: inherit;
+  	font-size: 16px;
+  	cursor: pointer;
+  	width: 45%;
+    display: inline-block;
+
+}
+html
+{
+	height: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	
+}
+
+body
+{
+	height: 100%;
+	min-height: 100%;
+	max-width: 100%;
+}
+.Foots:visited {
+	 color: #8BC53F;
+ 	
+ }

@@ -1,0 +1,75 @@
+<link rel="stylesheet" href='../static/css/Search.css'></link>
+<html>
+<body>
+<div class='Top'>
+		<a style='cursor:pointer;' href='None'>
+			<form method ='post' action='/'><input type="image" src="..//static/Grosearch.png" name="saveForm" class="Logo" id="saveForm" ></form>
+		</a>
+		<form class='search' method ='post' action ='/search'><input name='searchable' class ="Searchbar" type="text" placeholder="e.g. 'Bread'">	</form>
+</div>
+
+<div class ='Middle'>
+	<table class='Comps' >
+	    <thead>
+	        <tr>
+	            <th><div ><img src='../static/WalmartSearch.png' alt='Walmart' ></img></th ></div>
+	        </tr>
+	    </thead>
+	    <tbody align='center'>
+	        {% for product in table_data %}
+	            <tr>
+	                <td><div class='card'><img src={{product.imageInfo.thumbnailUrl}} ><h1 >{{product.name}}</h1><p class='price'> ${{product.priceInfo.currentPrice.price}}</p><p><form target="_blank" action="https://Walmart.com/{{product.canonicalUrl}}"><button>Retailer Site</button></p></form></div></td>
+	                
+	            </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+	<table class="Comps" >
+	    <thead>
+	        <tr>
+	            <th ><img src='../static/Sprouts.png' alt='Target' ></img></th >
+	        </tr>
+	    </thead>
+	    <tbody align='center'>
+	        {% for product in Sprouts_data %}
+	            <tr>
+	                <td><div class='card'><img src={{product[2]}}><h1>{{product[0]}}</h1><p class='price'>{{product[1]}}</p><p><form target="_blank" action="{{product[3]}}"><button>Retailer Site</button></p></form></div></td>
+	            </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+	<table class="Comps" >
+	    <thead>
+	        <tr>
+	            <th ><img src='../static/AlbertSearch.png' alt='albertsons' ></img></th >
+	        </tr>
+	    </thead>
+	    <tbody align='center'>
+	        {% for product in Albert_data %}
+	            <tr>
+	                <td><div class='card'><img src={{product[2]}} ><h1>{{product[0]}}</h1><p class='price'>${{product[1]}}</p><p><form target="_blank" action="{{product[3]}}"><button>Retailer Site</button></p></form></div></td>
+	            </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+	<table class='Comps' >
+	    <thead>
+	        <tr>
+	            <th ><img src='../static/CostSearch.png' alt='CostCo' ></img></th >
+	        </tr>
+	    </thead>
+	    <tbody align='center'>
+	        {% for product in CostCo_data %}
+	            <tr>
+	                <td><div class='card'><img src={{product[2]}} ><h1 >{{product[0]}}</h1><p class='price'>${{product[1]}}</p><p><form target="_blank" action="{{product[3]}}"><button>Retailer Site</button></p></form></div></td>
+	            </tr>
+	        {% endfor %}
+	    </tbody>
+	</table>
+	
+</div>
+<footer>
+	<form method ='post' action='/about'><button class='Foots' href=none>About</button> | <button class='Foots'href='Noodle.com'>Blog</button></form>
+</footer>
+</body>
+</html>
