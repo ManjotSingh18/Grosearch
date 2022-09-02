@@ -4,10 +4,10 @@ Created on Aug 16, 2022
 @author: manjo
 '''
 import flask
-from Grosearch_app import Walmart
-from Grosearch_app import Sprouts 
-from Grosearch_app import Albertsons
-from Grosearch_app import CostCo  
+import Walmart
+import Sprouts 
+import Albertsons
+import CostCo  
 app = flask.Flask(__name__)
 #Deployment 
 #Renders landing page for site
