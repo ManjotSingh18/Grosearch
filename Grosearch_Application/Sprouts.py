@@ -6,13 +6,14 @@ Created on Aug 20, 2022
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import  Options
-
+import os
 
 def SproutsCapture(item:str) -> 'JSON Dict':
     #Chrome options are used to hide browser in background while scraping occurs
     chrome_options= Options()
     chrome_options.add_argument("--headless")
-    driver = webdriver.Chrome('/Users/manjo/Downloads/chromedriver_win32/chromedriver',  options= chrome_options)
+    User=os.getlogin()
+    driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
     driver.get('https://shop.sprouts.com/search?search_term={}'.format(item))
     products=[]
     #Sleep is required for browser actions to occur in given time-frame

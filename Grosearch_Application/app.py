@@ -9,7 +9,6 @@ import Sprouts
 import Albertsons
 import CostCo  
 app = flask.Flask(__name__)
-#Deployment 
 #Renders landing page for site
 @app.route('/', methods=['POST', 'GET'])
 def index():

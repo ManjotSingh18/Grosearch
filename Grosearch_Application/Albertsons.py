@@ -7,11 +7,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import  Options
 import time
 import re
+import os
 def AlbertsonCapture(item):
     #The chrome options are used to hide the selenium bowser that is scraping in the background
     chrome_options= Options()
     chrome_options.add_argument("--headless")
-    driver = webdriver.Chrome('/Users/manjo/Downloads/chromedriver_win32/chromedriver', options= chrome_options)
+    User=os.getlogin()
+    driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
     driver.get("https://www.albertsons.com/shop/search-results.html?q={}".format(item))
     #sleep is required for page elements to load in completely
     time.sleep(2.5) 

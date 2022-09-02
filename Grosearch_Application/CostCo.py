@@ -6,6 +6,7 @@ Created on Aug 22, 2022
 from selenium import webdriver
 import re
 import time
+import os
 from selenium.webdriver.chrome.options import  Options
 
 def CostCoCapture(item):
@@ -15,7 +16,8 @@ def CostCoCapture(item):
     chrome_options.add_argument('user-agent={}'.format(user_agent))
     #Headless browser makes selenium 
     chrome_options.add_argument("--headless")
-    driver = webdriver.Chrome('/Users/manjo/Downloads/chromedriver_win32/chromedriver', options= chrome_options)
+    User=os.getlogin()
+    driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
     driver.get("https://www.costco.com/CatalogSearch?dept=All&keyword={}".format(item))
     #Sleep is required for elements of page to fully load
     time.sleep(3) 
