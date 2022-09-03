@@ -13,5 +13,17 @@ Searching for grocery across multiple websites has always been cumbersome due to
 # Low Prices Guranteed
 A glaring issue about the displayed products that may arise at first sight is the lack of personalized options for sorting. This was done by design as Grosearch seeks to focus on budgeting, and sorting features have been ommited as it is assumed users are seeking the lowest prices with less emphasis on other categories. Grosearch is catered towards students, and anyone else who is seeking to save money. 
 
-# The Stores
+# Partner Stores
 The Stores have been selected based upon accessibility. The communications with Walamrt is established by uttilization of their Application Programming Interface. Alternatively the communications with Sprouts, CostCo, and Alberstons was established by scraping their publicly available data off their websites respectively. All rights are reserved to them, I do not seek personal monetary gain from this application. Links to retailer wesbites hosting the product have been provided if users are intrested in purchasing a displayed product.
+
+# Technology 
+## Python
+Used to develop back-end of application providing a stable foundation for implementation of modules and future 
+## HTML
+Provides foundation and structure for graphical interface of application displaying data via Jinja2 
+## CSS
+Adds graphical, and themeatic accents upon html structures to make site more user-friendly
+## Flask
+Creates a tether between Python and HTML/CSS allowing data to be registerd, interpreted and displayed
+## Selenium
+Utilized as a versatile web scraper able to scrape several wesbites at an efficent rate mimicking scrolls, and clicks.
