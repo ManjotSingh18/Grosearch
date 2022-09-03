@@ -18,7 +18,7 @@ def SproutsCapture(item:str) -> 'JSON Dict':
     #Sleep is required for browser actions to occur in given time-frame
     time.sleep(5) 
     total_height = int(driver.execute_script("return document.body.scrollHeight"))
-    #With height of site recorded, below is a spider that crawls through the page in-order to load html elements that otherwise be hidden.
+    #With height of site recorded, below is a spider that crawls through the page in-order to load html elements that otherwise is hidden.
     for i in range(1, total_height, 5):
         driver.execute_script("window.scrollTo(0, {});".format(i))
     time.sleep(3)
