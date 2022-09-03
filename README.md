@@ -16,14 +16,31 @@ A glaring issue about the displayed products that may arise at first sight is th
 # Partner Stores
 The Stores have been selected based upon accessibility. The communications with Walamrt is established by uttilization of their Application Programming Interface. Alternatively the communications with Sprouts, CostCo, and Alberstons was established by scraping their publicly available data off their websites respectively. All rights are reserved to them, I do not seek personal monetary gain from this application. Links to retailer wesbites hosting the product have been provided if users are intrested in purchasing a displayed product.
 
+# Requirements
+* Python (Selenium, Requests, JSON, Flask) 
+* Python Interpreter
+* Network Connection
+
+# Installation
+1. Download the repository in its entirety, it should be formatted as a zip file
+
+3. Unzip the repository into your local users download folder, this is nessecary
+4. Open the folder Grosearch_Application through your interpreter
+5. Follow the user guide below
+
+# User Guide
+1. 
+
 # Technology 
 ## Python
-Used to develop back-end of application providing a stable foundation for implementation of modules and future 
+* Used to develop back-end of application providing a stable foundation for implementation of modules and future 
 ## HTML
-Provides foundation and structure for graphical interface of application displaying data via Jinja2 
+* Provides foundation and structure for graphical interface of application displaying data via Jinja2 
 ## CSS
-Adds graphical, and themeatic accents upon html structures to make site more user-friendly
+* Adds graphical, and themeatic accents upon html structures to make site more user-friendly
 ## Flask
-Creates a tether between Python and HTML/CSS allowing data to be registerd, interpreted and displayed
+* Creates a tether between Python and HTML/CSS allowing data to be registerd, interpreted and displayed
 ## Selenium
-Utilized as a versatile web scraper able to scrape several wesbites at an efficent rate mimicking scrolls, and clicks.
+* Utilized as a versatile web scraper able to scrape several wesbites at an efficent rate mimicking scrolls, and clicks.
+
+
