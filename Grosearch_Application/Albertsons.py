@@ -11,7 +11,6 @@ import os
 def AlbertsonCapture(item):
     #The chrome options are used to hide the selenium bowser that is scraping in the background
     chrome_options= Options()
-    chrome_options.add_argument("--headless")
     User=os.getlogin()
     driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
     driver.get("https://www.albertsons.com/shop/search-results.html?q={}".format(item))

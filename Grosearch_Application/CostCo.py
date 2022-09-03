@@ -13,9 +13,7 @@ def CostCoCapture(item):
     chrome_options= Options()
     #user_agent is required to acsess page in its entirety
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
-    chrome_options.add_argument('user-agent={}'.format(user_agent))
     #Headless browser makes selenium 
-    chrome_options.add_argument("--headless")
     User=os.getlogin()
     driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
     driver.get("https://www.costco.com/CatalogSearch?dept=All&keyword={}".format(item))
