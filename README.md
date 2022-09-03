@@ -24,20 +24,26 @@ The Stores have been selected based upon accessibility. The communications with 
 
 # Installation
 1. Download the repository in its entirety, it should be formatted as a zip file
-
-3. Unzip the repository into your local users download folder, this is nessecary
-4. Open the folder Grosearch_Application through your interpreter
-5. Follow the user guide below
+![Logo](Grosearch_Application/README_Images/Zip.png)
+2. Unzip the repository into your local users download folder, this is nessecary
+![Logo](Grosearch_Application/README_Images/Extract.png)
+3. Open the folder Grosearch_Application through your respective interpreter
+4. Follow the user guide below
 
 # User Guide
 1. Within the Grosearch_Application folder open in interpreter find the app.py module
 2. Assuming nessecary modules are installed (ex. pip install selenium, in command prompt) run app.py as a Python File
 3. Within the respective console will display something simmilar to the image below
+![Logo](Grosearch_Application/README_Images/Console.png)
 4. Open your browser, and visit your local host by searching http://127.0.0.1:5000
 5. Ensure the program is still running as it will not work if running is paused or stopped within interpreter
-6. The application should preseent a landing page at your local connection like the one below:
+6. The application should preseent a landing page at your local connection (http://127.0.0.1:5000) like the one below:
+![Logo](Grosearch_Application/README_Images/Landing.png)
 7. From here preform a search on the desired product, it may take anywhere from 40-70 seconds due to intensive nature of scraping many sites. Alterntively visit the links at the bottom of the page to learn more about the application, and development.
-8. 
+8. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visiting the retailer sites for the ones needed. Also from this search page further searches for more products can be done in the top-right hand corner. The Grosearch logo will lead back to the landing page, and links for further information are avaiable at the bottom of the application. 
+![Logo](Grosearch_Application/README_Images/Search.png)
+9. Once done stop the process from the interpreter and local host should be disengaged and cleared of Grosearch
+
 # Technology 
 ## Python
 * Used to develop back-end of application providing a stable foundation for implementation of modules and future 
