@@ -63,7 +63,7 @@ The Stores have been selected based upon accessibility. The communications with 
 Grosearch is open-source and will benefit greatly if given the chance from community contribution. The process would include creating a branch from the master, and then adding a new store module (ex. Target.py). From there the module requires one function a scrape of any variety that is able to get products within a list format with each product being nested either as a dictionary or JSON (Price, Image, Retailer Link, Title). Ensure the function returns the list. After that update the app.py module within the catch() functions return statement:
 flask.render_template('search.html', (Insert Store Here)-data = (New Store).DataCapture(item), ...). Remember to import the new store module at the top of app.py. Following that update Search.html and add a new table below the previous tables mimicking their structure, but with the flask passed variables that hold the new product list. When store is sucsessfully incorporated, and displaying products ensure that the companys logo is displayed on the landing page, and credit is given. Congratualtions you have expanded the scope, and accessbility of Grosearch. Thank you. 
 
-#Future
+# Future
 Grosearch will expand its collection of products, and stores through contributions encompassing more of the digital frontier. I hope to expand the format of application beyond local hosting by developing a light-weight graphical user interface based upon Python using the Qt package in order to make installation and usage faster, and clearer. 
 
 
