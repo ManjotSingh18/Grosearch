@@ -20,6 +20,7 @@ The Stores have been selected based upon accessibility. The communications with 
 * Python (Selenium, Requests, JSON, Flask) 
 * Python Interpreter
 * Network Connection
+* Browser
 
 # Installation
 1. Download the repository in its entirety, it should be formatted as a zip file
@@ -29,8 +30,14 @@ The Stores have been selected based upon accessibility. The communications with 
 5. Follow the user guide below
 
 # User Guide
-1. 
-
+1. Within the Grosearch_Application folder open in interpreter find the app.py module
+2. Assuming nessecary modules are installed (ex. pip install selenium, in command prompt) run app.py as a Python File
+3. Within the respective console will display something simmilar to the image below
+4. Open your browser, and visit your local host by searching http://127.0.0.1:5000
+5. Ensure the program is still running as it will not work if running is paused or stopped within interpreter
+6. The application should preseent a landing page at your local connection like the one below:
+7. From here preform a search on the desired product, it may take anywhere from 40-70 seconds due to intensive nature of scraping many sites. Alterntively visit the links at the bottom of the page to learn more about the application, and development.
+8. 
 # Technology 
 ## Python
 * Used to develop back-end of application providing a stable foundation for implementation of modules and future 
