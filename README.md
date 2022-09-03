@@ -39,8 +39,8 @@ The Stores have been selected based upon accessibility. The communications with 
 5. Ensure the program is still running as it will not work if running is paused or stopped within interpreter
 6. The application should preseent a landing page at your local connection (http://127.0.0.1:5000) like the one below:
 ![Logo](Grosearch_Application/README_Images/Landing.png)
-7. From here preform a search on the desired product, it may take anywhere from 40-70 seconds due to intensive nature of scraping many sites. Alterntively visit the links at the bottom of the page to learn more about the application, and development.
-8. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visiting the retailer sites for the ones needed. Also from this search page further searches for more products can be done in the top-right hand corner. The Grosearch logo will lead back to the landing page, and links for further information are avaiable at the bottom of the application. 
+7. From here preform a search on the desired product, it may take anywhere from 40-70 seconds due to intensive nature of scraping many sites. Alterntively visit the links at the bottom of the page to learn more about the application, and development
+8. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visiting the retailer sites for the ones needed. Also from this search page further searches for more products can be done in the top-right hand corner. The Grosearch logo will lead back to the landing page, and links for further information are avaiable at the bottom of the application 
 ![Logo](Grosearch_Application/README_Images/Search.png)
 9. Once done stop the process from the interpreter and local host should be disengaged and cleared of Grosearch
 
@@ -54,6 +54,12 @@ The Stores have been selected based upon accessibility. The communications with 
 ## Flask
 * Creates a tether between Python and HTML/CSS allowing data to be registerd, interpreted and displayed
 ## Selenium
-* Utilized as a versatile web scraper able to scrape several wesbites at an efficent rate mimicking scrolls, and clicks.
+* Utilized as a versatile web scraper able to scrape several wesbites at an efficent rate mimicking scrolls, and clicks
+
+# Contributions 
+Grosearch is open-source and will benefit greatly if given the chance from community contribution. The process would include creating a branch from the master, and then adding a new store module (ex. Target.py). From there the module requires one function a scrape of any variety that is able to get products within a list format with each product being nested either as a dictionary or JSON (Price, Image, Retailer Link, Title). Ensure the function returns the list. After that update the app.py module within the catch() functions return statement:
+flask.render_template('search.html', (Insert Store Here)-data = (New Store).DataCapture(item), ...). Remember to import the new store module at the top of app.py. Following that update Search.html and add a new table below the previous tables mimicking their structure, but with the flask passed variables that hold the new product list. When store is sucsessfully incorporated, and displaying products ensure that the companys logo is displayed on the landing page, and credit is given. Congratualtions you have expanded the scope, and accessbility of Grosearch. Thank you. 
+
+
 
 
