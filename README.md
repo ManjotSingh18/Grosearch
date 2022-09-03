@@ -3,6 +3,9 @@
 # About
 Searching for grocery across multiple websites has always been cumbersome due to redundant typing, and tabs cluttering the browser. Now is the time to simplify, and declutter. Welcome to Grosearch, a application with a powerful singular search able to traverse through several stores displaying popular products to users while focusing in on budgeting and low prices. Grosearch seeks to foster an enviornment where money and time is saved alongside stopping digital headaches. 
 
+# Mission
+Develop a singular search able to encompass several retailers displaying their products together for straightforward comparison with emphasis on limited budgeting
+
 # Features
 * Powerful singular search encompassing several retailers and products
 * Easy to navigate graphical interface 
@@ -60,6 +63,7 @@ The Stores have been selected based upon accessibility. The communications with 
 Grosearch is open-source and will benefit greatly if given the chance from community contribution. The process would include creating a branch from the master, and then adding a new store module (ex. Target.py). From there the module requires one function a scrape of any variety that is able to get products within a list format with each product being nested either as a dictionary or JSON (Price, Image, Retailer Link, Title). Ensure the function returns the list. After that update the app.py module within the catch() functions return statement:
 flask.render_template('search.html', (Insert Store Here)-data = (New Store).DataCapture(item), ...). Remember to import the new store module at the top of app.py. Following that update Search.html and add a new table below the previous tables mimicking their structure, but with the flask passed variables that hold the new product list. When store is sucsessfully incorporated, and displaying products ensure that the companys logo is displayed on the landing page, and credit is given. Congratualtions you have expanded the scope, and accessbility of Grosearch. Thank you. 
 
-
+#Future
+Grosearch will expand its collection of products, and stores through contributions encompassing more of the digital frontier. I hope to expand the format of application beyond local hosting by developing a light-weight graphical user interface based upon Python using the Qt package in order to make installation and usage faster, and clearer. 
 
 
