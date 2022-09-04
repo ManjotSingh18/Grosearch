@@ -22,7 +22,8 @@ The Stores have been selected based on their accessibility. The communications w
 * Python (Selenium, Requests, JSON, Flask) 
 * Python Interpreter
 * Network Connection
-* Browser
+* Chrome
+* Chrome driver 
 
 # Installation
 1. Download the repository in its entirety, it should be formatted as a zip file
@@ -30,7 +31,9 @@ The Stores have been selected based on their accessibility. The communications w
 2. Unzip the repository into your local users' download folder, this is necessary
 ![Logo](Grosearch_Application/README_Images/Extract.png)
 3. Open the folder Grosearch_Application through your respective interpreter
-4. Follow the user guide below
+4. Next you will need to find the current version of  chrome you are using which can be done by clicking the three dots in the top right hand corner then clicking help, form there click about google chrome noting the version
+5. Go to https://chromedriver.chromium.org/downloads and download the corresponding version of chrome driver, and ensure that the chromedriver is downloaded and unzipped into the downloads folder
+6. Follow the user guide below
 
 # User Guide
 1. Within the Grosearch_Application folder open in interpreter find the app.py module
