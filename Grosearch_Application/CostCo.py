@@ -8,13 +8,15 @@ import re
 import time
 import os
 from selenium.webdriver.chrome.options import  Options
+from selenium.webdriver.chrome.service import Service
 
 def CostCoCapture(item):
     chrome_options= Options()
     #user_agent is required to access page in its entirety
     #Headless browser makes selenium 
     User=os.getlogin()
-    driver = webdriver.Chrome('/Users/{}/Downloads/chromedriver_win32/chromedriver'.format(User), options= chrome_options)
+    service=Service(executable_path='/Users/{}/Downloads/chromedriver_win32/chromedriver.exe'.format(User))
+    driver = webdriver.Chrome(service=service, options= chrome_options)
     driver.get("https://www.costco.com/CatalogSearch?dept=All&keyword={}".format(item))
     #Sleep is required for elements of page to fully load
     time.sleep(3) 
