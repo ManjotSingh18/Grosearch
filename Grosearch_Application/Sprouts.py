@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import  Options
 import os
 from selenium.webdriver.chrome.service import Service
 
-def SproutsCapture(item:str) -> 'JSON Dict':
+def SproutsCapture(item:str):
     #Chrome options are used to hide browser in background while scraping occurs
     chrome_options= Options()
     User=os.getlogin()
