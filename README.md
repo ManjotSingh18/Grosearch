@@ -22,7 +22,7 @@ The Stores have been selected based on their accessibility. The communications w
 * Python (Selenium, Requests, JSON, Flask) 
 * Python Interpreter
 * Network Connection
-* Chrome
+* Chrome (Only version 114 as of now due to selenium not being updated for later versions yet)
 * Chrome driver 
 
 # Installation
