@@ -13,7 +13,7 @@ def SproutsCapture(item:str):
     #Chrome options are used to hide browser in background while scraping occurs
     chrome_options= Options()
     User=os.getlogin()
-    service=Service(executable_path='/Users/{}/Downloads/chromedriver_win32/chromedriver.exe'.format(User))
+    service=Service(executable_path='/Users/{}/Downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe'.format(User))
     driver = webdriver.Chrome(service=service, options= chrome_options)
     driver.get('https://shop.sprouts.com/search?search_term={}'.format(item))
     products=[]

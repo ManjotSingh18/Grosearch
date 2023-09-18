@@ -14,7 +14,7 @@ def AlbertsonCapture(item):
     #The chrome options are used to hide the selenium bowser that is scraping in the background
     chrome_options= Options()
     User=os.getlogin()
-    service=Service(executable_path='/Users/{}/Downloads/chromedriver_win32/chromedriver.exe'.format(User))
+    service=Service(executable_path='/Users/{}/Downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe'.format(User))
     driver = webdriver.Chrome(service=service, options= chrome_options)
     driver.get("https://www.albertsons.com/shop/search-results.html?q={}".format(item))
     #sleep is required for page elements to load in completely

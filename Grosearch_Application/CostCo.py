@@ -15,7 +15,7 @@ def CostCoCapture(item):
     #user_agent is required to access page in its entirety
     #Headless browser makes selenium 
     User=os.getlogin()
-    service=Service(executable_path='/Users/{}/Downloads/chromedriver_win32/chromedriver.exe'.format(User))
+    service=Service(executable_path='/Users/{}/Downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe'.format(User))
     driver = webdriver.Chrome(service=service, options= chrome_options)
     driver.get("https://www.costco.com/CatalogSearch?dept=All&keyword={}".format(item))
     #Sleep is required for elements of page to fully load
