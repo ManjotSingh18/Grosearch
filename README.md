@@ -32,7 +32,7 @@ The Stores have been selected based on their accessibility. The communications w
 ![Logo](Grosearch_Application/README_Images/Extract.png)
 3. Open the folder Grosearch_Application through your respective interpreter
 4. Next you will need to find the current version of  chrome you are using which can be done by clicking the three dots in the top right hand corner then clicking help, form there click about google chrome noting the version
-5. Go to https://chromedriver.chromium.org/downloads and download the corresponding version of chrome driver win32, and ensure that the chromedriver is downloaded and unzipped into the downloads folder (downloads/chromedriver_win32)
+5. Go to https://chromedriver.chromium.org/downloads and download the corresponding version of chrome driver win32, and ensure that the chromedriver is downloaded and unzipped into the downloads folder (downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe, leave as is)
 6. Follow the user guide below
 
 # User Guide
@@ -48,6 +48,8 @@ The Stores have been selected based on their accessibility. The communications w
 8. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visit the retailer sites for the ones needed. Also from this search page further searches can be performed for products in the top-right-hand corner. The Grosearch logo will lead back to the landing page, and links for further information are available at the bottom of the application 
 ![Logo](Grosearch_Application/README_Images/Search.png)
 9. Once done stop the process from the interpreter and the local host should be disengaged and cleared of Grosearch
+
+(If errors are occurring please check if you have a matching chrome driver with your Chrome version, and it is stored as downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe) 
 
 # Technology 
 ## Python
