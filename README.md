@@ -36,8 +36,8 @@ The Stores have been selected based on their accessibility. The communications w
 6. Follow the user guide below
 
 # User Guide
-1. Within the Grosearch_Application folder open in interpreter find the app.py module
-2. Assuming necessary modules are installed (ex. pip install selenium, in command prompt) run app.py as a Python File
+1. Within the Grosearch_Application folder open in interpreter find the app.py module 
+2. Assuming necessary modules are installed (ex. pip install selenium, in command prompt) run app.py as a Python File (Install required libraries by opening the terminal navigating to Grosearch_Application and using the command, pip install -r requirements.txt)
 3. The respective console will display something similar to the image below
 ![Logo](Grosearch_Application/README_Images/Console.png)
 4. Open your browser, and visit your local host by searching http://127.0.0.1:5000
@@ -57,7 +57,7 @@ The Stores have been selected based on their accessibility. The communications w
 ## CSS
 * Adds graphical, and thematic accents to HTML structures to make the site more user-friendly
 ## Flask
-* Creates a tether between Python and HTML/CSS allowing data to be registered, interpreted ,and displayed
+* Creates a tether between Python and HTML/CSS allowing data to be registered, interpreted , and displayed
 ## Selenium
 * Utilized as a versatile web scraper able to scrape several websites at an efficient rate mimicking scrolls, and clicks
 
