@@ -1,22 +1,22 @@
 ![Logo](Grosearch_Application/static/Grosearch.png)
 # About
-Searching for groceries across multiple websites has always been cumbersome due to redundant typing, and tabs cluttering the browser. Now is the time to simplify, and declutter. Welcome to Grosearch, an application with a powerful singular search able to traverse through several stores displaying popular products to users while focusing on budgeting and low prices. Grosearch seeks to foster an environment where money and time are saved alongside stopping digital headaches. 
+Grosearch is here to streamline online grocery shopping experience. Bid farewell to repetitive typing, browser tab clutter, and digital headaches. With Grosearch, we provide a powerful single search that spans multiple online stores, presenting you with products. The focus is on helping you manage your budget and find the best prices, ensuring both time and money savings.
 
 # Mission
-Develop a singular search able to encompass several retailers displaying their products together for straightforward comparison with emphasis on limited budgeting
+Develop a singular search that encompasses multiple retailers, displaying their products for straightforward comparison, with a emphasis on budget-friendly options.
 
 # Features
-* Powerful singular search encompassing several retailers and products
+* Powerful single search across multiple retailers, simplifying shopping experience
 * Easy to navigate graphical interface 
-* Displays popular products sorted by lowest price by default
-* Products formatted graphically side-by-side emphasizing readability 
-* Local host-based only requiring outbound connections to authorized retailers
+* Discover products, sorted by lowest price by default
+* View products side-by-side in a visually friendly format for easy comparison
+* Operates on your local host and only requires outbound connections to authorized retailers, ensuring your data remains secure
 
 # Low Prices Guaranteed
-A glaring issue about the displayed products that may arise at first sight is the lack of personalized options for sorting. This was done by design as Grosearch seeks to focus on budgeting, and sorting features have been omited as it is assumed users are seeking the lowest prices with less emphasis on other categories. Grosearch is catered towards students and anyone else who is seeking to save money. 
+At first glance, you might notice that Grosearch doesn't offer personalized sorting options for displayed products. This design choice aligns with the mission: to prioritize budgeting and provide the lowest of prices. We assume that our users, including students and budget shoppers, are primarily seeking cost-effective solutions. With Grosearch, savings are a priority.
 
 # Partner Stores
-The Stores have been selected based on their accessibility. The communications with Walmart are established by the utilization of their Application Programming Interface. Alternatively, communications with Sprouts, Costco, and Albertsons were established by scraping the publicly available data of their websites respectively. All rights are reserved to them, I do not seek personal monetary gain from this application. Links to retailer websites hosting the product have been provided if users are interested in purchasing a displayed product.
+The selection of partner stores is based on convenience. We've established communication with Walmart through their Application Programming Interface (API). In contrast, we've obtained data from Sprouts, Costco, and Albertsons by scraping publicly available information from their websites. It's important to note that all rights are reserved to these retailers, and this application is not intended for personal monetary gain. Links are included to the retailer websites where you can purchase any displayed product.
 
 # Requirements
 * Python (Selenium, Requests, JSON, Flask) 
@@ -26,47 +26,46 @@ The Stores have been selected based on their accessibility. The communications w
 * Chrome driver win32 (Match version of Chrome)
 
 # Installation
-1. Download the repository in its entirety, it should be formatted as a zip file
+1. Download the repository in zip format.
 ![Logo](Grosearch_Application/README_Images/Zip.png)
-2. Unzip the repository into your local users' download folder, this is necessary
+2. Unzip the repository and ensure it's placed in current users download folder. This step is essential for proper functioning.
 ![Logo](Grosearch_Application/README_Images/Extract.png)
-3. Open the folder Grosearch_Application through your respective interpreter
-4. Next you will need to find the current version of  chrome you are using which can be done by clicking the three dots in the top right hand corner then clicking help, form there click about google chrome noting the version
-5. Go to https://chromedriver.chromium.org/downloads and download the corresponding version of chrome driver win32, and ensure that the chromedriver is downloaded and unzipped into the downloads folder (downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe, leave as is)
+3. Open the folder Grosearch_Application through your preferred interpreter
+4. To ensure compatibility, find your current Chrome version. You can do this by clicking the three dots in the top right-hand corner, then selecting "Help," and finally clicking "About Google Chrome." Note the version number.
+5. Visit ChromeDriver (https://chromedriver.chromium.org/downloads) and download the corresponding "win32" version of ChromeDriver. Ensure that ChromeDriver is downloaded and unzipped into the "downloads" folder, maintaining the file structure as follows: "downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe."
 6. Follow the user guide below
 
 # User Guide
-1. Within the Grosearch_Application folder open in interpreter find the app.py module 
-2. Assuming necessary modules are installed (ex. pip install selenium, in command prompt) run app.py as a Python File (Install required libraries by opening the terminal navigating to Grosearch_Application and using the command, pip install -r requirements.txt)
-3. The respective console will display something similar to the image below
+1. Navigate to the Grosearch_Application in a terminal.
+2. Assuming necessary modules are installed run app.py using command: python app.py (Install required libraries by opening the terminal navigating to Grosearch_Application and using the command, pip install -r requirements.txt).
+3. The console will display something similar to the image below.
 ![Logo](Grosearch_Application/README_Images/Console.png)
-4. Open your browser, and visit your local host by searching http://127.0.0.1:5000
-5. Ensure the program is still running as it will not work if running is paused or stopped within the interpreter
-6. The application should present a landing page at your local connection (http://127.0.0.1:5000) like the one below:
+4. Open your browser and visit your local host by searching http://127.0.0.1:5000.
+5. The application should present a landing page at your local connection (http://127.0.0.1:5000) like the one below:
 ![Logo](Grosearch_Application/README_Images/Landing.png)
-7. From here perform a search on the desired product, it may take anywhere from 40-70 seconds due to  the intensive nature of scraping many sites. Alternatively visit the links at the bottom of the page to learn more about the application, and development
-8. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visit the retailer sites for the ones needed. Also from this search page further searches can be performed for products in the top-right-hand corner. The Grosearch logo will lead back to the landing page, and links for further information are available at the bottom of the application 
+6. Now perform a search on the desired product, it may take anywhere from 40-70 seconds due to the intensive nature of scraping many sites.
+7. After the search is complete a page will be displayed in a table format including stores logos on the top of each column with products underneath, scroll through comparing products and visit the retailer sites for the ones needed. Also from this search page further searches can be performed for products in the top-right-hand corner. The Grosearch logo will lead back to the landing page.
 ![Logo](Grosearch_Application/README_Images/Search.png)
-9. Once done stop the process from the interpreter and the local host should be disengaged and cleared of Grosearch
+8. Once done stop the process from the interpreter and the local host should be disengaged.
 
 (If errors are occurring please check if you have a matching chrome driver with your Chrome version, and it is stored as downloads/chromedriver-win32/chromedriver-win32/chromedriver.exe) 
 
 # Technology 
 ## Python
-* Used to develop the back-end of application providing a stable foundation for implementation of modules and future 
+* provides a stable foundation for module implementation and website development.
 ## HTML
-* Provides foundation and structure for the graphical interface of the application displaying data via Jinja2 
+* Forms the structure of graphical interface and is used in conjunction with Jinja2 to display data. 
 ## CSS
-* Adds graphical, and thematic accents to HTML structures to make the site more user-friendly
+* Adds graphical styling to HTML structures.
 ## Flask
-* Creates a tether between Python and HTML/CSS allowing data to be registered, interpreted , and displayed
+* Acts as the bridge between Python and HTML/CSS, enabling the registration, interpretation, and display of data.
 ## Selenium
-* Utilized as a versatile web scraper able to scrape several websites at an efficient rate mimicking scrolls, and clicks
+* Serves as a web scraper, navigating websites by mimicking scrolls and clicks to gather the information needed.
 
 # Contributions 
-Grosearch is open-source and will benefit greatly if given the chance from community contribution. The process would include creating a branch from the master and then adding a new store module (ex. Target.py). From there the module requires one function a scrape of any variety that is able to get products within a list format with each product being nested either as a dictionary or JSON (Price, Image, Retailer Link, Title). Ensure the function returns the list. After that update, the app.py module within the catch() functions return statement: flask.render_template('search.html', (Insert Store Here)-data = (New Store).DataCapture(item), ...). Remember to import the new store module at the top of app.py. Following that update Search.html and add a new table below the previous tables mimicking their structure, but with the flask passed variables that hold the new product list. When the store is successfully incorporated, and displaying products ensure that the company's logo is displayed on the landing page, and credit is given. Congratulations you have expanded the scope, and accessibility of Grosearch. Thank you.
+Grosearch is an open-source project and welcomes contribution. The process would include creating a branch from master and adding a new store module (ex. Target.py). Next the module requires one function, a scrape of any variety that is able to get products into an array format with each product being nested either as a dictionary or JSON (Price, Image, Retailer Link, Title). After that update, the app.py module catch() function's return statement needs to be modified as such: flask.render_template('search.html', (Insert Store Here)-data = (New Store).DataCapture(item), ...). Following that update Search.html and add a new table below the previous tables mimicking their structure, but with the new flask variables that hold the new product list. When the store is successfully incorporated and displaying products; ensure that the company's logo is displayed on the landing page, and credit is given. Thank you!
 
 # Future
-Grosearch will expand its collection of products, and stores through contributions encompassing more of the digital frontier. I hope to expand the format of the application beyond local hosting by developing a lightweight graphical user interface based upon Python using the Qt package in order to make installation and usage faster, and clearer (Project for Educational Purposes Only).
+Grosearch will expand its scope through contributions encompassing more of the digital frontier. I am exploring the development of a lightweight graphical user interface (GUI) based on Python and the Qt package. This feature aims to streamline installation and usage, making it faster and more user-friendly (Project for Educational Purposes Only).
 
 
