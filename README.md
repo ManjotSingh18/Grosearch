@@ -19,14 +19,15 @@ At first glance, you might notice that Grosearch doesn't offer personalized sort
 The selection of partner stores is based on convenience. We've established communication with Walmart through their Application Programming Interface (API). In contrast, we've obtained data from Sprouts, Costco, and Albertsons by scraping publicly available information from their websites. It's important to note that all rights are reserved to these retailers, and this application is not intended for personal monetary gain. Links are included to the retailer websites where you can purchase any displayed product.
 
 # Video Showcase
-<a href="https://www.youtube.com/watch?v=YatHC76V7u4"><img src="https://img.youtube.com/vi/YatHC76V7u4/maxresdefault.jpg" width="100%" height="auto" style="border-radius:50%"></a>
+<p align="center">
+<a href="https://www.youtube.com/watch?v=YatHC76V7u4"><img src="https://img.youtube.com/vi/YatHC76V7u4/maxresdefault.jpg" width="50%" height="auto" style="border-radius:50%"></a></p>
 
 # Requirements
 * Python (Selenium, Requests, JSON, Flask) 
 * Python Interpreter
 * Network Connection
 * Chrome 
-* Chrome driver win32 (Match version of Chrome)
+* Chromedriver win32 (Match version of Chrome)
 
 # Installation
 1. Download the repository in zip format.
